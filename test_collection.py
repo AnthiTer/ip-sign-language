@@ -7,9 +7,7 @@ import time
 
 mp_hol = mp.solutions.holistic
 mp_draw = mp.solutions.drawing_utils
-DATA_PATH = os.path.join('/Users/anthi/Documents/IP/signs')
-DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/signs_hands')
-DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/signs_pose')
+DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/test_signs_hands')
 # actions = np.array(['iloveyou'])
 # actions = np.array(['goodbye'])
 # actions = np.array(['hi'])
@@ -78,9 +76,7 @@ def extract_pose_hand_keypoints(results):
 for x in actions:
     for y in range(no_vid+start):
         try: 
-            os.makedirs(os.path.join(DATA_PATH, x, rec(y)))
             os.makedirs(os.path.join(DATA_PATH_HAND, x, rec(y)))
-            os.makedirs(os.path.join(DATA_PATH_POSE, x, rec(y)))
         except:
             pass
 
@@ -110,33 +106,15 @@ with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5
                 keypoints_hand = extract_hand_keypoints(result)
                 keypoints_pose = extract_pose_hand_keypoints(result)
 
-                path_npy_all = os.path.join(DATA_PATH, x, rec(y), str(f))
                 path_npy_hand = os.path.join(DATA_PATH_HAND, x, rec(y), str(f))
-                path_npy_pose = os.path.join(DATA_PATH_POSE, x, rec(y), str(f))
-                
-                np.save(path_npy_all, keypoints_all)
+               
                 np.save(path_npy_hand, keypoints_hand)
-                np.save(path_npy_pose, keypoints_pose)
                 
                 if cv2.waitKey(10) & 0xFF == ord('q'):
                     break
     cap.release()
     cv2.destroyAllWindows()
     
-# test camera to see if everything works
-# cap = cv2.VideoCapture(0)
-# with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5) as holistic:
-#     while cap.isOpened():
-#         ret, frame = cap.read()
-#         img, result = colour_conv(frame, holistic)
-#         landmark_show(img, result)
-#         cv2.imshow('Sign Language Recognition', img)
-#         cv2.namedWindow('Sign Language Recognition', cv2.WINDOW_NORMAL)
-#         cv2.resizeWindow('Sign Language Recognition', 800, 600)
-#         if cv2.waitKey(10) & 0xFF == ord('q'):
-#             break
-#     cap.release()
-#     cv2.destroyAllWindows()
 
 # print(result.pose_landmarks)
 # print(len(result.pose_landmarks.landmark))
