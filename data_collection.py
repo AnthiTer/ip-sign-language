@@ -17,12 +17,12 @@ DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/signs_pose')
 # actions = np.array(['me'])
 # actions = np.array(['thankyou'])
 actions = np.array(['goodmorning'])
-no_vid = 15
+no_vid = 30
 frames = 30
 start = 0
 
 def rec(x):
-    return 'b_0'+ str(x)
+    return 'f_0'+ str(x)
 
 # as pictures/videos from cv2 are in BGR form, we have to change it so they can be readable
 def colour_conv(img, model):
@@ -99,7 +99,7 @@ with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5
                     cv2.imshow('Sign Language Recognition', img)
                     cv2.namedWindow('Sign Language Recognition', cv2.WINDOW_NORMAL)
                     cv2.resizeWindow('Sign Language Recognition', 800, 600)
-                    cv2.waitKey(2000)
+                    cv2.waitKey(2500)
                 else:
                     cv2.putText(img, 'COLLECTING FRAMES FOR {} VIDEO NO.{}'.format(x,y), (15, 30), cv2.FONT_HERSHEY_SIMPLEX, 1 , (0,0,255), 2, cv2.LINE_AA)
                     cv2.imshow('Sign Language Recognition', img)
