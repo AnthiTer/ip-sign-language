@@ -1,7 +1,5 @@
 import numpy as np
 import os
-from sklearn.model_selection import train_test_split
-import torch
 
 # DATA_PATH = os.path.join('/Users/anthi/Documents/IP/duplicate/signs')
 DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/duplicate/signs_hands')
@@ -45,17 +43,5 @@ def label_data():
 label_data()
 print(np.array(sequences).shape)
 
-# np.save('sequences.npy', sequences)
-# np.save('labels.npy', labels)
-
-# sequences = np.load('sequences.npy')
-# labels = np.load('labels.npy')
-
-X = np.array(sequences)
-# labels_tensor = (labels, dtype=torch.int64).clone().detach()
-# y = torch.nn.functional.one_hot(torch.tensor(labels_tensor)).to(torch.float32)
-labels_tensor = torch.tensor(labels, dtype=torch.int64)
-labels_tensor_copy = labels_tensor.clone().detach()
-y = torch.nn.functional.one_hot(labels_tensor_copy).to(torch.float32)
-
-print(y)
+np.save('sequences_hand.npy', sequences)
+np.save('labels_hand.npy', labels)

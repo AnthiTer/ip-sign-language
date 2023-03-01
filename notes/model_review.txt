@@ -1,0 +1,122 @@
+action1.h5
+w/o any pre-processing of data
+actions = np.array(['goodbye', 'hi', 'you', 'me', 'thankyou', 'goodmorning'])
+Epoch 84/500
+15/15 [==============================] - 4s 268ms/step - loss: 0.2804 - categorical_accuracy: 0.8796
+Model: "sequential_9"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ bidirectional (Bidirectiona  (None, 30, 128)          165376    
+ l)                                                              
+                                                                 
+ bidirectional_1 (Bidirectio  (None, 30, 256)          263168    
+ nal)                                                            
+                                                                 
+ bidirectional_2 (Bidirectio  (None, 128)              164352    
+ nal)                                                            
+                                                                 
+ dense_24 (Dense)            (None, 64)                8256      
+                                                                 
+ dense_25 (Dense)            (None, 32)                2080      
+                                                                 
+ dense_26 (Dense)            (None, 6)                 198       
+                                                                 
+=================================================================
+Total params: 603,430
+Trainable params: 603,430
+Non-trainable params: 0
+_________________________________________________________________
+
+model1 = Sequential()
+model1.add(Bidirectional(LSTM(64, return_sequences=True, activation='relu'), input_shape=(30, 258)))
+model1.add(Bidirectional(LSTM(128, return_sequences=True, activation='relu')))
+model1.add(Bidirectional(LSTM(64, return_sequences=False, activation='relu')))
+model1.add(Dense(64, activation='relu'))
+model1.add(Dense(32, activation='relu'))
+model1.add(Dense(actions.shape[0], activation='softmax'))
+
+model1.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+accuracy = 0.87
+f1score = array([1, 0.917, 0.75, 0.851, 0.813, 0.903])
+f1score(all)=0.869
+recall = array([1, 0.917, 0.75, 0.87, 0.765, 0.933])
+recall(all) = 0.87
+precision = array([1, 0.917, 0.75, 0.833, 0.867, 0.875])
+precision = 0.87
+multilabel_confusion_matrix = 
+array([[[83,  0],
+        [ 0, 17]],
+
+       [[87,  1],
+        [ 1, 11]],
+
+       [[80,  4],
+        [ 4, 12]],
+
+       [[73,  4],
+        [ 3, 20]],
+
+       [[81,  2],
+        [ 4, 13]],
+
+       [[83,  2],
+        [ 1, 14]]])
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+--------------------------------------------------------------------------------------------------------
+action.h5
+w/o any pre-processing of data
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ lstm (LSTM)                 (None, 30, 64)            82688     
+                                                                 
+ lstm_1 (LSTM)               (None, 30, 128)           98816     
+                                                                 
+ lstm_2 (LSTM)               (None, 64)                49408     
+                                                                 
+ dense (Dense)               (None, 64)                4160      
+                                                                 
+ dense_1 (Dense)             (None, 32)                2080      
+                                                                 
+ dense_2 (Dense)             (None, 6)                 198       
+                                                                 
+=================================================================
+Total params: 237,350
+Trainable params: 237,350
+Non-trainable params: 0
+_________________________________________________________________
+model1 = Sequential()
+model1.add(LSTM(64, return_sequences=True, activation='relu'), input_shape=(30, 258))
+model1.add(LSTM(128, return_sequences=True, activation='relu'))
+model1.add(LSTM(64, return_sequences=False, activation='relu'))
+model1.add(Dense(64, activation='relu'))
+model1.add(Dense(32, activation='relu'))
+model1.add(Dense(actions.shape[0], activation='softmax'))
+accuracy = 0.86
+f1score = array([0.971, 0.857, 0.778, 0.833, 0.8, 0.933])
+f1score(all)= 0.86
+recall = array([1, 0.75, 0.875, 0.87, 0.706, 0.933])
+recall(all) = 0.86
+precision = array([0.944, 1, 0.7, 0.8, 0.923, 0.933])
+precision = 0.873
+multilabel_confusion_matrix = 
+array([[[82,  1],
+        [ 0, 17]],
+
+       [[88,  0],
+        [ 3,  9]],
+
+       [[78,  6],
+        [ 2, 14]],
+
+       [[72,  5],
+        [ 3, 20]],
+
+       [[82,  1],
+        [ 5, 12]],
+
+       [[84,  1],
+        [ 1, 14]]])

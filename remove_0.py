@@ -1,21 +1,21 @@
 import os
 import shutil
 import numpy as np
+import plotly.express as px
 
 # Set the path to the bigger folder
-path = '/Users/anthi/Documents/IP/duplicate/signs_hands/you'
-path1 = '/Users/anthi/Documents/IP/duplicate/signs_pose/you'
+path = '/Users/anthi/Documents/IP/signs_hands/happy'
+path1 = '/Users/anthi/Documents/IP/signs_pose/happy'
 file = '0.npy'
 list = []
 no_remove = 0
 list_names=[]
 
-def find_outliers_iqr(data, kl=0.35, ku=0.6):
+def find_outliers_iqr(data, kl=0.35):
     q1, q2, q3 = np.percentile(data, [25, 50, 75])
     iqr = q3 - q1
     lower_bound = q1 - (iqr * kl)
-    upper_bound = q3 + (iqr * ku)
-    return lower_bound, upper_bound, q2
+    return lower_bound, q2
 
 for folder in os.listdir(path):
     folder_pathname = os.path.join(path, folder)
@@ -54,6 +54,9 @@ print(sum(list)/120)
 print(find_outliers_iqr(list))
 print(no_remove)
 print(list_names)
+
+fig = px.histogram(list, nbins = 50)
+fig.show()
 
 for f in list_names:
     folder_path = os.path.join(path1, f)

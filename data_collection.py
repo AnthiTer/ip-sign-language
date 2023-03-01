@@ -16,13 +16,18 @@ DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/signs_pose')
 # actions = np.array(['you'])
 # actions = np.array(['me'])
 # actions = np.array(['thankyou'])
-actions = np.array(['goodmorning'])
+# actions = np.array(['goodmorning'])
+# actions = np.array(['happy'])
+# actions = np.array(['come'])
+# actions = np.array(['good'])
+# actions = np.array(['sorry'])
+actions = np.array(['home'])
 no_vid = 30
 frames = 30
 start = 0
 
 def rec(x):
-    return 'f_0'+ str(x)
+    return 'a_0'+ str(x)
 
 # as pictures/videos from cv2 are in BGR form, we have to change it so they can be readable
 def colour_conv(img, model):
@@ -123,20 +128,3 @@ with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5
     cap.release()
     cv2.destroyAllWindows()
     
-# test camera to see if everything works
-# cap = cv2.VideoCapture(0)
-# with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5) as holistic:
-#     while cap.isOpened():
-#         ret, frame = cap.read()
-#         img, result = colour_conv(frame, holistic)
-#         landmark_show(img, result)
-#         cv2.imshow('Sign Language Recognition', img)
-#         cv2.namedWindow('Sign Language Recognition', cv2.WINDOW_NORMAL)
-#         cv2.resizeWindow('Sign Language Recognition', 800, 600)
-#         if cv2.waitKey(10) & 0xFF == ord('q'):
-#             break
-#     cap.release()
-#     cv2.destroyAllWindows()
-
-# print(result.pose_landmarks)
-# print(len(result.pose_landmarks.landmark))

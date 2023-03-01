@@ -15,7 +15,7 @@ DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/test_signs_hands')
 # actions = np.array(['me'])
 # actions = np.array(['thankyou'])
 actions = np.array(['goodmorning'])
-no_vid = 10
+no_vid = 6
 frames = 30
 start = 0
 
