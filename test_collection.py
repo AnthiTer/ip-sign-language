@@ -8,13 +8,7 @@ import time
 mp_hol = mp.solutions.holistic
 mp_draw = mp.solutions.drawing_utils
 DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/test_signs_hands')
-# actions = np.array(['iloveyou'])
-# actions = np.array(['goodbye'])
-# actions = np.array(['hi'])
-# actions = np.array(['you'])
-# actions = np.array(['me'])
-# actions = np.array(['thankyou'])
-actions = np.array(['goodmorning'])
+actions = np.array(['whatever'])
 no_vid = 6
 frames = 30
 start = 0
@@ -114,7 +108,3 @@ with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5
                     break
     cap.release()
     cv2.destroyAllWindows()
-    
-
-# print(result.pose_landmarks)
-# print(len(result.pose_landmarks.landmark))

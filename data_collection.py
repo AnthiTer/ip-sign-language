@@ -22,12 +22,12 @@ DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/signs_pose')
 # actions = np.array(['good'])
 # actions = np.array(['sorry'])
 actions = np.array(['home'])
-no_vid = 30
+no_vid = 10
 frames = 30
 start = 0
 
 def rec(x):
-    return 'a_0'+ str(x)
+    return 'k_0'+ str(x)
 
 # as pictures/videos from cv2 are in BGR form, we have to change it so they can be readable
 def colour_conv(img, model):

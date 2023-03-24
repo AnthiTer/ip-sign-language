@@ -7,17 +7,6 @@ import time
 
 mp_hol = mp.solutions.holistic
 mp_draw = mp.solutions.drawing_utils
-# DATA_PATH = os.path.join('/Users/anthi/Documents/IP/test_sign')
-# # actions = np.array(['iloveyou'])
-# # actions = np.array(['goodbye'])
-# # actions = np.array(['hi'])
-# # actions = np.array(['you'])
-# # actions = np.array(['me'])
-# # actions = np.array(['thankyou'])
-# actions = np.array(['goodmorning'])
-# no_vid = 15
-# frames = 30
-# start = 0
 
 # as pictures/videos from cv2 are in BGR form, we have to change it so they can be readable
 def colour_conv(img, model):
@@ -58,5 +47,3 @@ with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5
     cap.release()
     cv2.destroyAllWindows()
 
-# print(result.pose_landmarks)
-# print(len(result.pose_landmarks.landmark))

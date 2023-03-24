@@ -1,3 +1,157 @@
+action3.h5
+[needs some tuning but seems good]
+w/o preprocessing
+Model: "sequential_25"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d_44 (Conv1D)          (None, 28, 128)           99200     
+                                                                 
+ conv1d_45 (Conv1D)          (None, 26, 128)           49280     
+                                                                 
+ max_pooling1d_22 (MaxPoolin  (None, 8, 128)           0         
+ g1D)                                                            
+                                                                 
+ dropout_43 (Dropout)        (None, 8, 128)            0         
+                                                                 
+ conv1d_46 (Conv1D)          (None, 6, 256)            98560     
+                                                                 
+ conv1d_47 (Conv1D)          (None, 4, 256)            196864    
+                                                                 
+ max_pooling1d_23 (MaxPoolin  (None, 1, 256)           0         
+ g1D)                                                            
+                                                                 
+ dropout_44 (Dropout)        (None, 1, 256)            0         
+                                                                 
+ bidirectional_23 (Bidirecti  (None, 1, 1024)          3149824   
+ onal)                                                           
+                                                                 
+ bidirectional_24 (Bidirecti  (None, 512)              2623488   
+ onal)                                                           
+                                                                 
+ dense_63 (Dense)            (None, 256)               131328    
+                                                                 
+ dropout_45 (Dropout)        (None, 256)               0         
+                                                                 
+ dense_64 (Dense)            (None, 128)               32896     
+                                                                 
+ dense_65 (Dense)            (None, 6)                 774       
+                                                                 
+=================================================================
+Total params: 6,382,214
+Trainable params: 6,382,214
+Non-trainable params: 0
+_________________________________________________________________
+
+model = Sequential()
+model.add(Conv1D(128, 3, activation='relu', input_shape=(30, 258)))
+model.add(Conv1D(128, 3, activation='relu'))
+model.add(MaxPooling1D(3))
+model.add(Dropout(0.2))
+model.add(Conv1D(256, 3, activation='relu'))
+model.add(Conv1D(256, 3, activation='relu'))
+model.add(MaxPooling1D(3))
+model.add(Dropout(0.2))
+model.add(Bidirectional(LSTM(512, return_sequences=True, dropout=0.2)))
+model.add(Bidirectional(LSTM(256, dropout=0.2)))
+model.add(Dense(256, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(128, activation='relu'))
+model.add(Dense(actions.shape[0], activation='softmax'))
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+--------------------------------------------------------------------------------------------------------
+
+action2.h5
+w/o preprocessing
+Model: "sequential_20"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv1d_24 (Conv1D)          (None, 28, 64)            49600     
+                                                                 
+ conv1d_25 (Conv1D)          (None, 26, 64)            12352     
+                                                                 
+ max_pooling1d_12 (MaxPoolin  (None, 8, 64)            0         
+ g1D)                                                            
+                                                                 
+ dropout_28 (Dropout)        (None, 8, 64)             0         
+                                                                 
+ conv1d_26 (Conv1D)          (None, 6, 128)            24704     
+                                                                 
+ conv1d_27 (Conv1D)          (None, 4, 128)            49280     
+                                                                 
+ max_pooling1d_13 (MaxPoolin  (None, 1, 128)           0         
+ g1D)                                                            
+                                                                 
+ dropout_29 (Dropout)        (None, 1, 128)            0         
+                                                                 
+ lstm_50 (LSTM)              (None, 1, 128)            131584    
+                                                                 
+ lstm_51 (LSTM)              (None, 1, 128)            131584    
+                                                                 
+ lstm_52 (LSTM)              (None, 64)                49408     
+                                                                 
+ dense_48 (Dense)            (None, 128)               8320      
+                                                                 
+ dropout_30 (Dropout)        (None, 128)               0         
+                                                                 
+ dense_49 (Dense)            (None, 64)                8256      
+                                                                 
+ dense_50 (Dense)            (None, 6)                 390       
+                                                                 
+=================================================================
+Total params: 465,478
+Trainable params: 465,478
+Non-trainable params: 0
+_________________________________________________________________
+
+model = Sequential()
+model.add(Conv1D(64, 3, activation='relu', input_shape=(30, 258)))
+model.add(Conv1D(64, 3, activation='relu'))
+model.add(MaxPooling1D(3))
+model.add(Dropout(0.2))
+model.add(Conv1D(128, 3, activation='relu'))
+model.add(Conv1D(128, 3, activation='relu'))
+model.add(MaxPooling1D(3))
+model.add(Dropout(0.2))
+model.add(LSTM(128, return_sequences=True, dropout=0.2))
+model.add(LSTM(128, return_sequences=True, dropout=0.2))
+model.add(LSTM(64, dropout=0.2))
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.2))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(actions.shape[0], activation='softmax'))
+
+accuracy = 0.84
+f1score = array([0.889, 0.865, 0.815, 0.778, 0.833, 0.865])
+f1score(all)=0.84
+recall = array([0.857, 0.889, 0.733, 0.824, 0.833, 0.889])
+recall(all) = 0.84
+precision = array([0.923, 0.842, 0.917, 0.737, 0.833, 0.842])
+precision = 0.845
+multilabel_confusion_matrix = 
+array([[[85,  1],
+        [ 2, 12]],
+
+       [[79,  3],
+        [ 2, 16]],
+
+       [[84,  1],
+        [ 4, 11]],
+
+       [[78,  5],
+        [ 3, 14]],
+
+       [[79,  3],
+        [ 3, 15]],
+
+       [[79,  3],
+        [ 2, 16]]])
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+--------------------------------------------------------------------------------------------------------
+
 action1.h5
 w/o any pre-processing of data
 actions = np.array(['goodbye', 'hi', 'you', 'me', 'thankyou', 'goodmorning'])
@@ -28,15 +182,15 @@ Trainable params: 603,430
 Non-trainable params: 0
 _________________________________________________________________
 
-model1 = Sequential()
-model1.add(Bidirectional(LSTM(64, return_sequences=True, activation='relu'), input_shape=(30, 258)))
-model1.add(Bidirectional(LSTM(128, return_sequences=True, activation='relu')))
-model1.add(Bidirectional(LSTM(64, return_sequences=False, activation='relu')))
-model1.add(Dense(64, activation='relu'))
-model1.add(Dense(32, activation='relu'))
-model1.add(Dense(actions.shape[0], activation='softmax'))
+model = Sequential()
+model.add(Bidirectional(LSTM(64, return_sequences=True, activation='relu'), input_shape=(30, 258)))
+model.add(Bidirectional(LSTM(128, return_sequences=True, activation='relu')))
+model.add(Bidirectional(LSTM(64, return_sequences=False, activation='relu')))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(actions.shape[0], activation='softmax'))
 
-model1.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
+model.compile(optimizer='Adam', loss='categorical_crossentropy', metrics=['categorical_accuracy'])
 accuracy = 0.87
 f1score = array([1, 0.917, 0.75, 0.851, 0.813, 0.903])
 f1score(all)=0.869
@@ -88,13 +242,13 @@ Total params: 237,350
 Trainable params: 237,350
 Non-trainable params: 0
 _________________________________________________________________
-model1 = Sequential()
-model1.add(LSTM(64, return_sequences=True, activation='relu'), input_shape=(30, 258))
-model1.add(LSTM(128, return_sequences=True, activation='relu'))
-model1.add(LSTM(64, return_sequences=False, activation='relu'))
-model1.add(Dense(64, activation='relu'))
-model1.add(Dense(32, activation='relu'))
-model1.add(Dense(actions.shape[0], activation='softmax'))
+model = Sequential()
+model.add(LSTM(64, return_sequences=True, activation='relu'), input_shape=(30, 258))
+model.add(LSTM(128, return_sequences=True, activation='relu'))
+model.add(LSTM(64, return_sequences=False, activation='relu'))
+model.add(Dense(64, activation='relu'))
+model.add(Dense(32, activation='relu'))
+model.add(Dense(actions.shape[0], activation='softmax'))
 accuracy = 0.86
 f1score = array([0.971, 0.857, 0.778, 0.833, 0.8, 0.933])
 f1score(all)= 0.86
