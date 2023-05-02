@@ -3,6 +3,13 @@ import shutil
 import numpy as np
 import plotly.express as px
 
+'''
+From the folder signs_hands, classify the sequence of signs into 2 groups: left and right hand. 
+There are many folders, which each of them invclude a sequence of 30 frames in npy form.
+The left hand is the one that is ending with 63 0's and the right hand is the one that is starting with 63 0s.
+How can I add the folder name to the bigger folders of the left hand or the right hand?
+'''
+
 # me = 0.45
 # you = 0.55
 # home = 1.4
