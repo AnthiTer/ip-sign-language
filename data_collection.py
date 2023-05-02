@@ -1,33 +1,31 @@
 import cv2
 import numpy as np
 import mediapipe as mp
-import matplotlib.pyplot as plt
 import os
-import time
 
 mp_hol = mp.solutions.holistic
 mp_draw = mp.solutions.drawing_utils
 DATA_PATH = os.path.join('/Users/anthi/Documents/IP/signs')
 DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/signs_hands')
 DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/signs_pose')
-# actions = np.array(['iloveyou'])
-# actions = np.array(['goodbye'])
-# actions = np.array(['hi'])
-# actions = np.array(['you'])
-# actions = np.array(['me'])
-# actions = np.array(['thankyou'])
-# actions = np.array(['goodmorning'])
-# actions = np.array(['happy'])
-# actions = np.array(['come'])
-# actions = np.array(['good'])
-# actions = np.array(['sorry'])
-actions = np.array(['home'])
+# signs = np.array(['iloveyou'])
+# signs = np.array(['goodbye'])
+# signs = np.array(['hi'])
+# signs = np.array(['you'])
+# signs = np.array(['me'])
+# signs = np.array(['thankyou'])
+# signs = np.array(['goodmorning'])
+# signs = np.array(['happy'])
+# signs = np.array(['come'])
+# signs = np.array(['good'])
+# signs = np.array(['sorry'])
+signs = np.array(['home'])
 no_vid = 10
 frames = 30
 start = 0
 
 def rec(x):
-    return 'k_0'+ str(x)
+    return 'z_0'+ str(x)
 
 # as pictures/videos from cv2 are in BGR form, we have to change it so they can be readable
 def colour_conv(img, model):
@@ -80,7 +78,7 @@ def extract_pose_hand_keypoints(results):
         for res in results.pose_landmarks.landmark]).flatten() if results.pose_landmarks else np.zeros(33*4)
     return np.concatenate([lhand, rhand, pose])
 
-for x in actions:
+for x in signs:
     for y in range(no_vid+start):
         try: 
             os.makedirs(os.path.join(DATA_PATH, x, rec(y)))
@@ -91,7 +89,7 @@ for x in actions:
 
 cap = cv2.VideoCapture(0)
 with mp_hol.Holistic(min_detection_confidence=0.5, min_tracking_confidence = 0.5) as holistic:
-    for x in actions:
+    for x in signs:
         for y in range(start, start + no_vid):
             for f in range(frames):
                 ret, frame = cap.read()

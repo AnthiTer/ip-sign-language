@@ -1,0 +1,39 @@
+Accuracy:  0.91
+Recall (weighted):  0.91
+Precision (weighted):  0.925
+F1 score (weighted):  0.911
+Recall :  [0.87, 0.889, 0.867, 1.0, 0.833, 1.0]
+Precision :  [1.0, 0.941, 1.0, 0.8, 1.0, 0.8]
+F1 score :  [0.93, 0.914, 0.929, 0.889, 0.909, 0.889]
+
+Model: "sequential_15"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ lstm_45 (LSTM)              (None, 30, 64)            82688     
+                                                                 
+ leaky_re_lu_8 (LeakyReLU)   (None, 30, 64)            0         
+                                                                 
+ lstm_46 (LSTM)              (None, 30, 128)           98816     
+                                                                 
+ leaky_re_lu_9 (LeakyReLU)   (None, 30, 128)           0         
+                                                                 
+ lstm_47 (LSTM)              (None, 64)                49408     
+                                                                 
+ leaky_re_lu_10 (LeakyReLU)  (None, 64)                0         
+                                                                 
+ dense_45 (Dense)            (None, 64)                4160      
+                                                                 
+ leaky_re_lu_11 (LeakyReLU)  (None, 64)                0         
+                                                                 
+ dense_46 (Dense)            (None, 32)                2080      
+                                                                 
+ dense_47 (Dense)            (None, 6)                 198       
+                                                                 
+=================================================================
+Total params: 237,350
+Trainable params: 237,350
+Non-trainable params: 0
+_________________________________________________________________
+
+Epochs = 63

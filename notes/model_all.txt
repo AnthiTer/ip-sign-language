@@ -1,0 +1,93 @@
+Accuracy:  0.943
+Recall (weighted):  0.943
+Precision (weighted):  0.945
+F1 score (weighted):  0.943
+Recall :  [0.913, 0.917, 0.947, 0.947, 1.0, 0.905, 1.0, 1.0, 0.909, 1.0, 0.875, 0.92]
+Precision :  [1.0, 1.0, 0.947, 0.947, 0.92, 0.95, 1.0, 1.0, 0.87, 0.95, 0.824, 0.92]
+F1 score :  [0.955, 0.957, 0.947, 0.947, 0.958, 0.927, 1.0, 1.0, 0.889, 0.974, 0.848, 0.92]
+
+Model: "sequential_14"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ lstm_42 (LSTM)              (None, 30, 64)            82688     
+                                                                 
+ leaky_re_lu_4 (LeakyReLU)   (None, 30, 64)            0         
+                                                                 
+ lstm_43 (LSTM)              (None, 30, 128)           98816     
+                                                                 
+ leaky_re_lu_5 (LeakyReLU)   (None, 30, 128)           0         
+                                                                 
+ lstm_44 (LSTM)              (None, 64)                49408     
+                                                                 
+ leaky_re_lu_6 (LeakyReLU)   (None, 64)                0         
+                                                                 
+ dense_42 (Dense)            (None, 64)                4160      
+                                                                 
+ leaky_re_lu_7 (LeakyReLU)   (None, 64)                0         
+                                                                 
+ dense_43 (Dense)            (None, 32)                2080      
+                                                                 
+ dense_44 (Dense)            (None, 12)                396       
+                                                                 
+=================================================================
+Total params: 237,548
+Trainable params: 237,548
+Non-trainable params: 0
+_________________________________________________________________
+
+Epochs = 85
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+Accuracy:  0.907
+Recall (weighted):  0.907
+Precision (weighted):  0.912
+F1 score (weighted):  0.906
+Recall :  [0.957, 0.875, 0.947, 0.842, 1.0, 0.905, 1.0, 1.0, 0.864, 0.947, 0.875, 0.72]
+Precision :  [0.917, 0.955, 0.857, 0.889, 1.0, 1.0, 0.909, 1.0, 0.731, 0.9, 0.824, 0.947]
+F1 score :  [0.936, 0.913, 0.9, 0.865, 1.0, 0.95, 0.952, 1.0, 0.792, 0.923, 0.848, 0.818]
+
+
+model = Sequential()
+model.add(LSTM(100, return_sequences=True, dropout=0.1, input_shape=(30, 258)))
+model.add(LeakyReLU())
+model.add(LSTM(200, return_sequences=True))
+model.add(LeakyReLU())
+model.add(LSTM(100, return_sequences=False))
+model.add(LeakyReLU())
+model.add(Dense(100))
+model.add(LeakyReLU())
+model.add(Dense(50))
+model.add(Dense(actions.shape[0], activation='softmax'))
+
+Model: "sequential_41"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ lstm_124 (LSTM)             (None, 30, 100)           143600    
+                                                                 
+ leaky_re_lu_112 (LeakyReLU)  (None, 30, 100)          0         
+                                                                 
+ lstm_125 (LSTM)             (None, 30, 200)           240800    
+                                                                 
+ leaky_re_lu_113 (LeakyReLU)  (None, 30, 200)          0         
+                                                                 
+ lstm_126 (LSTM)             (None, 100)               120400    
+                                                                 
+ leaky_re_lu_114 (LeakyReLU)  (None, 100)              0         
+                                                                 
+ dense_120 (Dense)           (None, 100)               10100     
+                                                                 
+ leaky_re_lu_115 (LeakyReLU)  (None, 100)              0         
+                                                                 
+ dense_121 (Dense)           (None, 50)                5050      
+                                                                 
+ dense_122 (Dense)           (None, 12)                612       
+                                                                 
+=================================================================
+Total params: 520,562
+Trainable params: 520,562
+Non-trainable params: 0
+_________________________________________________________________
