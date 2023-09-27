@@ -24,7 +24,7 @@ print(counters)
 print(np.sum(counters))
 
 fig = px.bar(x=signs, y=counters)
-fig.update_layout(title='Videos Distribution', plot_bgcolor='white',legend_title='signs')
+fig.update_layout(title='Video Distribution', plot_bgcolor='white',legend_title='signs')
 fig.update_xaxes(title='Signs', showgrid=False)
 fig.update_yaxes(title='Count', showgrid=False)
 fig.show()
