@@ -1,9 +1,9 @@
 import numpy as np
 import os
 
-# DATA_PATH = os.path.join('/Users/anthi/Documents/IP/duplicate/signs')
-DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/duplicate/signs_hands')
-DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/duplicate/signs_pose')
+# DATA_PATH = os.path.join('/duplicate/signs')
+DATA_PATH_HAND = os.path.join('/duplicate/signs_hands')
+DATA_PATH_POSE = os.path.join('/duplicate/signs_pose')
 
 # signs = np.array(['goodbye', 'goodmorning', 'hi', 'me', 'thankyou', 'you'])
 

@@ -7,7 +7,7 @@ import time
 
 mp_hol = mp.solutions.holistic
 mp_draw = mp.solutions.drawing_utils
-DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/test_signs_hands')
+DATA_PATH_HAND = os.path.join('/test_signs_hands')
 actions = np.array(['whatever'])
 no_vid = 6
 frames = 30

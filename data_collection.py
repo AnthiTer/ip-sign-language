@@ -5,9 +5,9 @@ import os
 
 mp_hol = mp.solutions.holistic
 mp_draw = mp.solutions.drawing_utils
-DATA_PATH = os.path.join('/Users/anthi/Documents/IP/signs')
-DATA_PATH_HAND = os.path.join('/Users/anthi/Documents/IP/signs_hands')
-DATA_PATH_POSE = os.path.join('/Users/anthi/Documents/IP/signs_pose')
+DATA_PATH = os.path.join('/signs')
+DATA_PATH_HAND = os.path.join('/signs_hands')
+DATA_PATH_POSE = os.path.join('/signs_pose')
 # signs = np.array(['iloveyou'])
 # signs = np.array(['goodbye'])
 # signs = np.array(['hi'])

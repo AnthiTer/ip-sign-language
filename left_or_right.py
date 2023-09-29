@@ -8,8 +8,8 @@ both_hands_folders = []
 null_folders = []
 folder_count = 0
 
-path_hand = '/Users/anthi/Documents/IP/help_duplicate/signs_hands/hi'
-path_pose = '/Users/anthi/Documents/IP/help_duplicate/signs_pose/hi'
+path_hand = '/help_duplicate/signs_hands/hi'
+path_pose = '/help_duplicate/signs_pose/hi'
 
 for folder in os.listdir(path_hand):
     folder_path = os.path.join(path_hand, folder)

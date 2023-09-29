@@ -24,8 +24,8 @@ How can I add the folder name to the bigger folders of the left hand or the righ
 # thankyou = 1.2
 
 # Set the path to the bigger folder
-path = '/Users/anthi/Documents/IP/duplicate/signs_hands/me'
-path1 = '/Users/anthi/Documents/IP/duplicate/signs_pose/me'
+path = '/duplicate/signs_hands/me'
+path1 = '/duplicate/signs_pose/me'
 file = '0.npy'
 list = []
 no_remove = 0

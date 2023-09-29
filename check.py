@@ -1,6 +1,6 @@
 import os
 
-root_folder = '/Users/anthi/Documents/IP/signs_hands'  # change this to the path of your root folder
+root_folder = '/signs_hands'  # change this to the path of your root folder
 
 for foldername, subfolders, filenames in os.walk(root_folder):
     num_files = len(filenames)
